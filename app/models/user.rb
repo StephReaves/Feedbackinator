@@ -6,5 +6,6 @@ class User < ActiveRecord::Base
 
   has_secure_password
 
-  has_many :reviews
+  has_many :sent_reviews, class_name: "Review", foreign_key: :sender_id
+  has_many :received_reviews, class_name: "Review", foreign_key: :sender_id
 end

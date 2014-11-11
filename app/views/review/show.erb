@@ -1,4 +1,6 @@
 <% if session[:user_id] == @review.id %>
-  <h1><%= @review.title %></h1>
-  <p><%= @review.text %></p>
+  <div class="review">
+    <h1><%= @review.title %></h1>
+    <p><%= @review.text %></p>
+   </div>
 <% end %>

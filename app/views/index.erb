@@ -1,18 +1,25 @@
 <div class="container">
   <h1>Users</h1>
   <% if current_user %>
-  <form action="/review/new">
-    <select>
+  <form action="/review/new" method="POST">
+    <select name="review[receiver_id]">
       <% @user.each do |user| %>
-      <option value="<%= user.name %>"> <%= user.name %></option>
+      <option value="<%= user.id %>"> <%= user.name %></option>
       <% end %>
-    </select>
+    </select><br><br>
+    <input type="text" name="review[title]" placeholder="Title"><br>
+    <input type="text" name="review[text]" placeholder="Leave your feedback here."><br>
+    <input type="hidden" name="review[sender_id]" value=<%= session[:user_id]%>>
+    <input type="submit" value="Send feedback.">
   </form>
     <ul>
     <% @reviews.each do |review| %>
       <li><a href="/review/<%= review.id %>"> <%= review.title %></a></li>
     <% end %>
     </ul>
-    <a href="/review/sent">Review sent feedback</a>
+    <div id="sent-feedback">
+      <a class="link" href="/review/sent">Review sent feedback</a>
+    </div>
+
   <% end %>
 </div>

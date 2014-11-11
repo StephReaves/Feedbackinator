@@ -11,3 +11,7 @@ get '/review/:id' do |id|
   erb :'/review/show'
 end
 
+post '/review/new' do
+  Review.create(params[:review])
+  redirect '/'
+end
