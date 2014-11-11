@@ -1,0 +1,7 @@
+<h1>Your sent messages</h1>
+<% @reviews.each do |review| %>
+<ul>
+   <p> <%= review.title %></p>
+  <li> <%= review.text %> </li>
+</ul>
+<% end %>
